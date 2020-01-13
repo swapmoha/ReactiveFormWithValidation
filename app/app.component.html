@@ -1,0 +1,35 @@
+<div>
+  <form [formGroup] = "myReactiveForm" (ngSubmit) = "onSubmit()">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="email" autocomplete="off"
+      formControlName="username" placeholder="Enter Username">
+    </div>
+    <div class="form-group">
+      <label for="username">UserEmail</label>
+      <input type="text" class="form-control" id="email" autocomplete="off"
+      formControlName="email" placeholder="Enter Email">
+      <div *ngIf="!myReactiveForm.get('email').valid && myReactiveForm.get('email').touched">
+        Please Enter Valdi email</div>
+    </div>
+    <div class="form-group">
+      <label for="username">Course</label>
+      <select class="form-control" id="course"  formControlName="course">
+        <option value="Angular">Angular</option>
+        <option value="Html">Html</option>
+        <option value="javascript">javascript</option>
+      </select>
+    </div>
+       <div class="form-group">
+         <div  *ngFor=' let gender of genders'>
+          <input type="radio"  id="{{ gender.id }} " 
+          formControlName="gender" value="{{ gender.value}}"
+           >
+          <label for="{{gender.id}}">{{ gender.value}}</label>
+         </div>
+    </div>
+    <div class="form-group">
+     <input type="submit" value="submit">
+    </div>
+  </form>
+</div>
